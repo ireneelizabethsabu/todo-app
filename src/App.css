@@ -1,38 +1,85 @@
-.App {
+:root{
+  --text : #212529;
+  --light : #EAF7DE;
+  --dark : #52B69A; 
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+.navbar{
+  background-color: var(--dark);
+  height: 100px;  
+}
+.navbar-brand{
+  color: var(--light);
+}
+.left-part{
+  background-color: var(--light);
+  min-height: 100vh;
+}
+.list-group-item{
+  background-color: inherit;
+  border: none;
+}
+a,a:hover{
+  text-decoration: none;
+  color: var(--text);
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+a:hover{
+  transform: scale(1.1);
+  font-weight: bold;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+button{
+  color: var(--light);
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+button:focus{
+  outline: none;
+}
+.form-control{
+  border-radius: 1.25rem;
+  color: var(--text);
+}
+.form-control:focus{
+  box-shadow: none;
+  border: 2px solid var(--dark);
+}
+svg{
+  margin: 0px auto;
+}
+.modal{
+  color: var(--text);
+}
+.modal-body{
+  padding: 2rem;
+}
+.modal-content{
+  background-color: var(--light);
+}
+.modal-header {
+  border-bottom: none;
+  background-color: white;
+  padding: inherit 2rem !important;
+}
+.close,.close:hover,.close:focus-visible{
+  color: var(--dark);
+  font-size: 2.0rem;
+  border: none;
+}
+.modal-footer{
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  border-top: none;
 }
-
-.App-link {
-  color: #61dafb;
+.label{
+  padding-left: 7px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+textarea{
+  min-height: 210px;
+  resize: none;
 }
