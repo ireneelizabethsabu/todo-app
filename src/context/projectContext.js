@@ -4,7 +4,7 @@ import {useProjects} from '../hooks/index';
 
 export const ProjectContext = createContext();
 export const ProjectProvider = ({children}) => {
-    const [projects, setProjects] = useProjects();
+    const {projects, setProjects} = useProjects();
 
     return (
         <ProjectContext.Provider value={{projects,setProjects}}>

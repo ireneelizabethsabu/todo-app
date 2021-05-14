@@ -1,6 +1,7 @@
 import React from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
 import {firebase} from '../../firebase';
+import RadioButtonUncheckedOutlinedIcon from '@material-ui/icons/RadioButtonUncheckedOutlined';
 
 export const CheckBox = ({id}) => { 
     
@@ -11,7 +12,8 @@ export const CheckBox = ({id}) => {
     };
 
     return (
-        <Checkbox color="secondary" inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} onClick={() => completedTask()}/>
+        <Checkbox icon={<RadioButtonUncheckedOutlinedIcon fontSize="small"/>} 
+        color="secondary" inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} onClick={() => completedTask()}/>
     );
 };
 

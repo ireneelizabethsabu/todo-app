@@ -2,13 +2,13 @@ import { useState, useEffect } from "react";
 import { firebase } from "../firebase";
 import moment from "moment";
 
-const collatedTasks = [
+export const collatedTasks = [
   { key: "HOME", name: "Home" },
   { key: "TODAY", name: "Today" },
   { key: "WEEK", name: "This Week" },
 ];
 
-const collatedTasksExists = (selectedProject) =>
+export const collatedTasksExists = (selectedProject) =>
   collatedTasks.find((task) => task.key === selectedProject);
 
 export const useTasks = (selectedProject) => {
@@ -74,4 +74,6 @@ export const useProjects = () => {
         });
         
     }, [projects]);
+
+    return {projects,setProjects};
 }

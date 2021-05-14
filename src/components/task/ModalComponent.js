@@ -15,22 +15,20 @@ import AddCircleOutlinedIcon from "@material-ui/icons/AddCircleOutlined";
 import Button from "@material-ui/core/Button";
 import moment from "moment";
 import { firebase } from "../../firebase";
+import {useSelectedProjectsValue, useSelectedProjectValue} from '../../context/selectedProjectContext';
 
-const taskList = [];
-
-export const TaskModal = ({ project, setTasks, setisSubmitted }) => {
+export const TaskModal = () => {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
+  const [project, setProject] = useState('');
+  const [task, setTask] = useState('');
 
-  const [task, setTask] = useState({
-    id: taskList.length,
-    title: "",
-    description: "",
-    date: "",
-    time: "",
-    group: "Nil",
-  });
+  const { selectedProjects} = useSelectedProjectsValue();
 
+  const addTask = () => {
+
+  }
+  
   function handleChange(e) {
     e.preventDefault();
     setTask({
@@ -40,10 +38,7 @@ export const TaskModal = ({ project, setTasks, setisSubmitted }) => {
   }
 
   function handleSubmit(e) {
-    e.preventDefault();
-    taskList.push(task);
-    setTasks(taskList);
-    setisSubmitted(true);
+    
   }
 
   return (

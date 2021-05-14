@@ -1,28 +1,51 @@
-import React from "react";
-import {
-  Col,
-  ListGroup,
-  ListGroupItem,
-} from "reactstrap";
-import {Project} from './ProjectComponent';
-
-const ListGrpItem = ({ text }) => {
-  return (
-    <ListGroupItem tag="a" href="#">
-      {text}
-    </ListGroupItem>
-  );
-};
+import React, { useState } from "react";
+import { Col, ListGroup, ListGroupItem } from "reactstrap";
+import { ProjectModal } from "./ProjectModalComponent";
+import { useSelectedProjectsValue } from "../context/selectedProjectContext";
+import { ProjectList } from "./ProjectListComponent";
 
 const SideMenu = () => {
+  const { setSelectedProjects } = useSelectedProjectsValue();
+  const [active, setActive] = useState('home');
+  //const [showProjects, setshowProjects] = useState(true);
+
   return (
     <Col xs="3" className="left-part">
-      <ListGroup className="text-center">
-        <ListGrpItem text={"Home"} />
-        <ListGrpItem text={"Today"} />
-        <ListGrpItem text={"This week"} />
-        <Project/>
+      <ListGroup >
+        <ListGroupItem
+          role="button"
+          className={`text-center ${active === 'home' ? 'active-item' : undefined}`} 
+          onClick={() => {
+            setActive('home');
+            setSelectedProjects('HOME');
+          }}
+        >
+          Home
+        </ListGroupItem>
+        <ListGroupItem
+          role="button"
+          className={`text-center ${active === 'today' ? 'active-item' : undefined}`} 
+          onClick={() => {
+            setActive('today');
+            setSelectedProjects('TODAY');
+          }}
+        >
+          Today
+        </ListGroupItem>
+        <ListGroupItem
+          role="button"
+          className={`text-center ${active === 'week' ? 'active-item' : undefined}`} 
+          onClick={() => {
+            setActive('week');
+            setSelectedProjects('WEEK');
+          }}
+        >
+          This week
+        </ListGroupItem>
       </ListGroup>
+      <ProjectModal />
+      <ListGroup >
+        { <ProjectList active={active} setActive={setActive} />}</ListGroup>
     </Col>
   );
 };

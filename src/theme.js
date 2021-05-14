@@ -7,6 +7,9 @@ export const theme = createMuiTheme({
         },
         secondary: {
             main: "#52B69A"
+        },
+        error: {
+            main: "#e57373"
         }
     },
     shape: {
@@ -16,17 +19,12 @@ export const theme = createMuiTheme({
         MuiButton: {
             root: {
                 borderRadius: 23,
-                fontSize: 20
             },
             label : {
-                color: "#EAF7DE"
+                color: "#EAF7DE",
+                fontSize: 17,
+                fontWeight: 600,
             },   
-        },
-        MuiTypography: {
-            body1: {
-                fontSize: 18,
-                fontWeight: 600
-            }
         },
         MuiButtonBase: {
             root: {
@@ -39,6 +37,11 @@ export const theme = createMuiTheme({
                 position: "fixed",
                 right: 40,
                 top: 500,
+            }
+        },
+        MuiCheckbox: {
+            root: {
+                color: '#212529'
             }
         }
     },
