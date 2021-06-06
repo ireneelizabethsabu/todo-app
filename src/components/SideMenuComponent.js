@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Col, ListGroup, ListGroupItem } from "reactstrap";
-import { ProjectModal } from "./ProjectModalComponent";
+import { ProjectModal } from './project/ProjectModalComponent';
 import { useSelectedProjectsValue } from "../context/selectedProjectContext";
-import { ProjectList } from "./ProjectListComponent";
+import { ProjectList } from './project/ProjectListComponent';
 
 const SideMenu = () => {
   const { setSelectedProjects } = useSelectedProjectsValue();
