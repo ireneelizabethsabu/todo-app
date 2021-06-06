@@ -13,34 +13,15 @@ import {
 } from "reactstrap";
 import AddCircleOutlinedIcon from "@material-ui/icons/AddCircleOutlined";
 import Button from "@material-ui/core/Button";
-import moment from "moment";
-import { firebase } from "../../firebase";
-import {useSelectedProjectsValue, useSelectedProjectValue} from '../../context/selectedProjectContext';
+import { useProjectsValue } from "../../context/projectContext";
+import { useTaskForm } from "../../hooks/index";
 
 export const TaskModal = () => {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
-  const [project, setProject] = useState('');
-  const [task, setTask] = useState('');
-
-  const { selectedProjects} = useSelectedProjectsValue();
-
-  const addTask = () => {
-
-  }
-  
-  function handleChange(e) {
-    e.preventDefault();
-    setTask({
-      ...task,
-      [e.target.name]: e.target.value,
-    });
-  }
-
-  function handleSubmit(e) {
+  const { projects } = useProjectsValue();
+  const { handleSubmit, handleChange, task } = useTaskForm();
     
-  }
-
   return (
     <>
       <AddCircleOutlinedIcon
@@ -50,7 +31,7 @@ export const TaskModal = () => {
       />
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle}>Task</ModalHeader>
-        <Form onSubmit={() => handleSubmit}>
+        <Form onSubmit={handleSubmit}>
           <ModalBody>
             <FormGroup row>
               <Label for="title" sm={2}>
@@ -110,7 +91,13 @@ export const TaskModal = () => {
                     id="Group"
                     value={task.group}
                     onChange={handleChange}
-                  ></Input>
+                  >
+                    {projects.map((project) => (
+                      <option key={`${project.projectId}`} value={`${project.projectId}`}>
+                        {project.name}
+                      </option>
+                    ))}
+                  </Input>
                 </FormGroup>
               </Col>
             </Row>
@@ -127,3 +114,5 @@ export const TaskModal = () => {
 };
 
 export default TaskModal;
+
+//       key={`${task.id}`}

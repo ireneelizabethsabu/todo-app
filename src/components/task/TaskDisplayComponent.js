@@ -1,29 +1,31 @@
-import React from "react";
-import { ListGroupItem, ListGroup, Container } from "reactstrap";
+import React,{useEffect} from "react";
+import { Container } from "reactstrap";
 import { useTasks } from "../../hooks/index";
 import { CheckBox } from "./CheckBoxComponent";
 import { collatedTasks, collatedTasksExists } from "../../hooks";
 import { useSelectedProjectsValue } from "../../context/selectedProjectContext";
 import { useProjectsValue } from "../../context/projectContext";
 
-export const getTitle = (projects, projectId) =>
+  const getTitle = (projects, projectId) =>
   projects.find((project) => project.projectId === projectId);
+  
+  const getCollatedTitle = (projects, key) =>
+    projects.find((project) => project.key === key);
 
-export const getCollatedTitle = (projects, key) =>
-  projects.find((project) => project.key === key);
-
-export const TaskDisplay = () => {
+  export const TaskDisplay = () => {
   const { selectedProjects } = useSelectedProjectsValue();
   const { tasks } = useTasks(selectedProjects);
   const { projects } = useProjectsValue();
-
+    
   let projectName = "";
 
   if (projects && selectedProjects && !collatedTasksExists(selectedProjects)) {
-    projectName = getTitle(projects, selectedProjects).name;
+    if(getTitle(projects, selectedProjects))
+      projectName = getTitle(projects, selectedProjects).name;
   }
   if (selectedProjects && collatedTasksExists(selectedProjects)) {
-    projectName = getCollatedTitle(collatedTasks, selectedProjects).name;
+    if(getCollatedTitle(collatedTasks, selectedProjects))
+      projectName = getCollatedTitle(collatedTasks, selectedProjects).name ;
   }
 
   return (
@@ -34,11 +36,12 @@ export const TaskDisplay = () => {
           <div key={`${task.id}`} className="task-div">
             <span>
               <CheckBox id={task.id} />
-              <span>{task.task}</span>
+              <span>{task.title}</span>
             </span>
           </div>
         ))}
       </Container>
     </>
+    
   );
 };
