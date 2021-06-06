@@ -21,25 +21,21 @@ export const useTasks = (selectedProject) => {
       .collection("tasks")
       .where("userId", "==", "srktevqdreoltivxthgr");
 
-    unsubscribe =
-      selectedProject && !collatedTasksExists(selectedProject)
-        ? (unsubscribe = unsubscribe.where("projectId", "==", selectedProject))
-        : selectedProject === "TODAY"
-        ? (unsubscribe = unsubscribe.where(
-            "date",
-            "==",
-            moment().format("DD/MM/YYYY")
-          ))
-        : selectedProject === "HOME" || selectedProject === 0
-        ? (unsubscribe = unsubscribe.where("date", "==", ""))
-        : unsubscribe;
+    
+    if (selectedProject && !collatedTasksExists(selectedProject)){
+      unsubscribe = unsubscribe.where("group", "==", selectedProject);
+    }else if (selectedProject === "TODAY")
+      unsubscribe = unsubscribe.where(
+        "date",
+        "==",
+        moment().format("DD/MM/YYYY")
+      );     
 
     unsubscribe = unsubscribe.onSnapshot((snapshot) => {
       const newTasks = snapshot.docs.map((task) => ({
         id: task.id,
         ...task.data(),
       }));
-
       setTasks(
         selectedProject === "WEEK"
           ? newTasks.filter(
@@ -49,31 +45,75 @@ export const useTasks = (selectedProject) => {
             )
           : newTasks.filter((task) => task.completed !== true)
       );
-
       setCompleted(newTasks.filter((task) => task.completed === true));
     });
 
     return () => unsubscribe();
   }, [selectedProject]);
 
-  return {tasks,completed};
+  return { tasks, completed };
 };
 
 export const useProjects = () => {
-    const [projects,setProjects] = useState([]);
+  const [projects, setProjects] = useState([]);
 
-    useEffect(() => {
-        firebase.firestore().collection('projects').where("userId", "==", "srktevqdreoltivxthgr").orderBy('projectId').get().then(snapshot => {
-            const allProjects = snapshot.docs.map(projects => ({
-                ...projects.data(),
-                docId: projects.id,
-            }));
-            if(JSON.stringify(allProjects) !== JSON.stringify(projects)){
-                setProjects(allProjects); 
-            }
+  useEffect(() => {
+    firebase
+      .firestore()
+      .collection("projects")
+      .where("userId", "==", "srktevqdreoltivxthgr")
+      .orderBy("projectId")
+      .get()
+      .then((snapshot) => {
+        const allProjects = snapshot.docs.map((projects) => ({
+          ...projects.data(),
+          docId: projects.id,
+        }));
+        if (JSON.stringify(allProjects) !== JSON.stringify(projects)) {
+          setProjects(allProjects);
+        }
+      });
+  }, [projects]);
+
+  return { projects, setProjects };
+};
+
+export const useTaskForm = () => {
+  const [task, setTask] = useState({
+    completed: false,
+    title: "",
+    description: "",
+    date: "",
+    time: "",
+    group: "",
+    userId: "srktevqdreoltivxthgr",
+  });
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    setTask({
+      ...task,
+      [e.target.name]: e.target.value,
+    });
+    console.log(task);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    task.group &&
+      task.title &&
+      firebase
+        .firestore()
+        .collection("tasks")
+        .add(task)
+        .then((docRef) => {
+          console.log("doc written");
         });
-        
-    }, [projects]);
+  };
 
-    return {projects,setProjects};
-}
+  return {
+    handleSubmit,
+    handleChange,
+    task,
+  };
+};
