@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Col, ListGroup, ListGroupItem } from "reactstrap";
-import { ProjectModal } from './project/ProjectModalComponent';
-import { useSelectedProjectsValue } from "../context/selectedProjectContext";
-import { ProjectList } from './project/ProjectListComponent';
+import { ProjectModal } from './project/ProjectModal';
+import { useSelectedProjectsValue } from "../context/selectedProject";
+import { ProjectList } from './project/ProjectList';
 
 const SideMenu = () => {
   const { setSelectedProjects } = useSelectedProjectsValue();
@@ -10,7 +10,7 @@ const SideMenu = () => {
   //const [showProjects, setshowProjects] = useState(true);
 
   return (
-    <Col xs="3" className="left-part">
+    <Col xs="4" sm="3" className="left-part">
       <ListGroup >
         <ListGroupItem
           role="button"

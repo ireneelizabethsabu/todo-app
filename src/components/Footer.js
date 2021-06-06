@@ -4,7 +4,7 @@ import { Container, Row } from 'reactstrap';
 class Footer extends Component {
     render(){
         return (
-        <Container fluid={true} className="footer">
+        <Container fluid={true} className="footer ">
             <Row className="justify-content-center py-3">
                 <span><a href="/">Telegram</a></span>
                 <span><a href="/">Github</a></span>

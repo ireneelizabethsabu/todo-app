@@ -1,8 +1,8 @@
 import React from "react";
-import { useSelectedProjectsValue } from "../../context/selectedProjectContext";
-import { useProjectsValue } from "../../context/projectContext";
+import { useSelectedProjectsValue } from "../../context/selectedProject";
+import { useProjectsValue } from "../../context/project";
 import { ListGroupItem } from "reactstrap";
-import { Project } from "./ProjectComponent";
+import { Project } from "./Project";
 
 export const ProjectList = ({active,setActive}) => {
   const { setSelectedProjects } = useSelectedProjectsValue();

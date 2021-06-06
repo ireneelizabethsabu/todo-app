@@ -1,10 +1,10 @@
-import React,{useEffect} from "react";
+import React from "react";
 import { Container } from "reactstrap";
 import { useTasks } from "../../hooks/index";
-import { CheckBox } from "./CheckBoxComponent";
+import { CheckBox } from "./CheckBox";
 import { collatedTasks, collatedTasksExists } from "../../hooks";
-import { useSelectedProjectsValue } from "../../context/selectedProjectContext";
-import { useProjectsValue } from "../../context/projectContext";
+import { useSelectedProjectsValue } from "../../context/selectedProject";
+import { useProjectsValue } from "../../context/project";
 
   const getTitle = (projects, projectId) =>
   projects.find((project) => project.projectId === projectId);
@@ -30,18 +30,16 @@ import { useProjectsValue } from "../../context/projectContext";
 
   return (
     <>
-      <h3 className="text-center">{projectName}</h3>
+      <h3 className="text-center py-3 text-uppercase">{projectName}</h3>
       <Container data-bs-spy="scroll" data-bs-offset="0" tabIndex="0">
         {tasks.map((task) => (
           <div key={`${task.id}`} className="task-div">
-            <span>
               <CheckBox id={task.id} />
               <span>{task.title}</span>
-            </span>
+              <span>{task.time}</span>      
           </div>
         ))}
       </Container>
-    </>
-    
+    </> 
   );
 };

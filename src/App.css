@@ -42,7 +42,7 @@ button:focus{
   outline: none;
 }
 .form-control{
-  border-radius: 1.25rem;
+  border-radius: .25rem;
   color: var(--text);
 }
 .form-control:focus{
@@ -103,4 +103,7 @@ textarea{
 }
 .task-div{
   border-bottom: 1px solid var(--light);
+}
+.footer{
+  background-color: var(--dark);
 }

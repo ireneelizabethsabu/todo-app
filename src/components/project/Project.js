@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { useSelectedProjectsValue } from "../context/selectedProjectContext";
-import { useProjectsValue } from "../context/projectContext";
+import { useSelectedProjectsValue } from "../../context/selectedProject";
+import { useProjectsValue } from "../../context/project";
 import { Modal, ModalBody, ModalFooter } from "reactstrap";
-import { firebase } from "../firebase";
+import { firebase } from "../../firebase";
 import DeleteIcon from "@material-ui/icons/Delete";
 import Button from "@material-ui/core/Button";
 

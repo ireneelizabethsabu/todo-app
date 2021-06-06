@@ -9,9 +9,9 @@ import {
 } from "reactstrap";
 import AddIcon from '@material-ui/icons/Add';
 import Button from "@material-ui/core/Button";
-import { firebase } from "../firebase";
-import { useProjectsValue } from "../context/projectContext";
-import { generatePushId } from "./randomId";
+import { firebase } from "../../firebase";
+import { useProjectsValue } from '../../context/project';
+import { generatePushId } from "../randomId";
 
 export const ProjectModal = () => {
   const [modal, setModal] = useState(false);

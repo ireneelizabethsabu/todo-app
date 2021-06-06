@@ -13,7 +13,7 @@ import {
 } from "reactstrap";
 import AddCircleOutlinedIcon from "@material-ui/icons/AddCircleOutlined";
 import Button from "@material-ui/core/Button";
-import { useProjectsValue } from "../../context/projectContext";
+import { useProjectsValue } from "../../context/project";
 import { useTaskForm } from "../../hooks/index";
 
 export const TaskModal = () => {
