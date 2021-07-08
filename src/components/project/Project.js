@@ -5,12 +5,13 @@ import { Modal, ModalBody, ModalFooter } from "reactstrap";
 import { firebase } from "../../firebase";
 import DeleteIcon from "@material-ui/icons/Delete";
 import Button from "@material-ui/core/Button";
+import "./project.css";
 
 export const Project = ({ project }) => {
   const [showConfirm, setshowConfirm] = useState(false);
   const { setSelectedProjects } = useSelectedProjectsValue();
   const { projects, setProjects } = useProjectsValue();
-  const [isShown, setIsShown] = useState('d-none');
+  const [isShown, setIsShown] = useState("d-none");
 
   const deleteProject = (docId) => {
     firebase
@@ -20,16 +21,22 @@ export const Project = ({ project }) => {
       .delete()
       .then(() => {
         setProjects([...projects]);
-        setSelectedProjects('HOME');
+        setSelectedProjects("HOME");
       });
   };
   return (
     <>
-      <div className="d-flex " onMouseEnter={() => setIsShown('d-block')} onMouseLeave={()=> setIsShown('d-none')}>
-      <span className="flex-fill pl-4">{project.name}</span>
-      <DeleteIcon className ={isShown}
-      onClick={() => setshowConfirm(!showConfirm)}  
-        color="error"/>
+      <div
+        className="d-flex "
+        onMouseEnter={() => setIsShown("d-block")}
+        onMouseLeave={() => setIsShown("d-none")}
+      >
+        <span className="flex-fill pl-4">{project.name}</span>
+          <DeleteIcon
+            className={isShown}
+            onClick={() => setshowConfirm(!showConfirm)}
+            color="error"
+          />
       </div>
       <Modal isOpen={showConfirm}>
         <ModalBody className="text-center delete">
@@ -42,7 +49,8 @@ export const Project = ({ project }) => {
             color="secondary"
             onClick={() => {
               setshowConfirm(!showConfirm);
-            }}>
+            }}
+          >
             CANCEL
           </Button>
           <Button

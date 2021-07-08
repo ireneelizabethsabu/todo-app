@@ -15,6 +15,7 @@ import AddCircleOutlinedIcon from "@material-ui/icons/AddCircleOutlined";
 import Button from "@material-ui/core/Button";
 import { useProjectsValue } from "../../context/project";
 import { useTaskForm } from "../../hooks/index";
+import Tooltip from "@material-ui/core/Tooltip";
 
 export const TaskModal = () => {
   const [modal, setModal] = useState(false);
@@ -24,11 +25,13 @@ export const TaskModal = () => {
     
   return (
     <>
+    <Tooltip title="Add task" arrow>
       <AddCircleOutlinedIcon
         color="secondary"
         fontSize="large"
         onClick={toggle}
       />
+      </Tooltip>
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle}>Task</ModalHeader>
         <Form onSubmit={handleSubmit}>
@@ -67,7 +70,7 @@ export const TaskModal = () => {
                     type="date"
                     name="date"
                     id="date"
-                    placeholder="date placeholder"
+                    placeholder="Choose due date"
                     value={task.date}
                     onChange={handleChange}
                   />
@@ -102,7 +105,7 @@ export const TaskModal = () => {
               </Col>
             </Row>
           </ModalBody>
-          <ModalFooter>
+          <ModalFooter className="justify-content-center border-top-0">
             <Button type="submit" color="secondary" onClick={toggle}>
               ADD
             </Button>
@@ -114,5 +117,3 @@ export const TaskModal = () => {
 };
 
 export default TaskModal;
-
-//       key={`${task.id}`}

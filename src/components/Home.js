@@ -2,12 +2,12 @@ import React from "react";
 import { Navbar, NavbarBrand, Col, Row } from "reactstrap";
 import { theme } from "../theme";
 import { ThemeProvider } from "@material-ui/styles";
-import {TaskDisplay} from "./task/TaskDisplay";
+import {TaskDisplay} from "./task/Display";
 import SideMenu from "./SideMenu";
-import TaskModal from "./task/TaskModal";
+import TaskModal from "./task/Modal";
 import { SelectedProjectProvider } from "../context/selectedProject";
 import { ProjectProvider } from "../context/project";
-import Footer from './Footer';
+//import Footer from './Footer';
 
 const Home = () => {
   return (
@@ -27,7 +27,6 @@ const Home = () => {
                 <TaskDisplay />
               </Col>
             </Row>
-            <Footer/>
           </ThemeProvider>
         </div>
       </ProjectProvider>

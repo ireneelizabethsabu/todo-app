@@ -1,0 +1,26 @@
+.task-div {
+  border-bottom: 1px solid var(--light);
+  display: inline-block;
+}
+.task-title {
+  font-size: 18px;
+}
+.task-description {
+  font-weight: 300;
+}
+
+.modal {
+  color: var(--text);
+}
+.modal-body {
+  padding: 2rem;
+  padding-bottom: 1px;
+}
+.modal-content {
+  background-color: var(--light);
+}
+.modal-header {
+  border-bottom: none;
+  background-color: white;
+  padding: inherit 1.5rem !important;
+}

@@ -3,6 +3,7 @@ import { useSelectedProjectsValue } from "../../context/selectedProject";
 import { useProjectsValue } from "../../context/project";
 import { ListGroupItem } from "reactstrap";
 import { Project } from "./Project";
+import './project.css';
 
 export const ProjectList = ({active,setActive}) => {
   const { setSelectedProjects } = useSelectedProjectsValue();

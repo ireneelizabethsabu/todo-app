@@ -28,20 +28,30 @@ export const theme = createMuiTheme({
         },
         MuiButtonBase: {
             root: {
-                margin: 10
+                margin: 0,
             }
         },
         MuiSvgIcon: {
             fontSizeLarge: {
                 fontSize: 80,
                 position: "fixed",
-                right: 40,
+                right: 20,
                 top: 500,
             }
         },
         MuiCheckbox: {
             root: {
                 color: '#212529'
+            }
+        },
+        MuiIconButton: {
+            root: {
+                padding: 6,
+            }
+        },
+        MuiChip: {
+            colorPrimary: {
+                marginRight: 5,
             }
         }
     },

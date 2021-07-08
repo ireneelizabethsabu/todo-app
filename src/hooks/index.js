@@ -28,7 +28,7 @@ export const useTasks = (selectedProject) => {
       unsubscribe = unsubscribe.where(
         "date",
         "==",
-        moment().format("DD/MM/YYYY")
+        moment().format("YYYY-MM-DD")
       );     
 
     unsubscribe = unsubscribe.onSnapshot((snapshot) => {
@@ -95,8 +95,17 @@ export const useTaskForm = () => {
       ...task,
       [e.target.name]: e.target.value,
     });
-    console.log(task);
   };
+
+  // const handleUpdate = (e) => {
+  //   e.preventDefault();
+  //   task.group &&
+  //     task.title &&
+  //     firebase
+  //       .firestore()
+  //       .collection("tasks")
+  //       .update(task);
+  // }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -105,10 +114,7 @@ export const useTaskForm = () => {
       firebase
         .firestore()
         .collection("tasks")
-        .add(task)
-        .then((docRef) => {
-          console.log("doc written");
-        });
+        .add(task);
   };
 
   return {

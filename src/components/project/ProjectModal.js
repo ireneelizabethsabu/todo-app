@@ -12,6 +12,8 @@ import Button from "@material-ui/core/Button";
 import { firebase } from "../../firebase";
 import { useProjectsValue } from '../../context/project';
 import { generatePushId } from "../randomId";
+import './project.css';
+import Tooltip from "@material-ui/core/Tooltip";
 
 export const ProjectModal = () => {
   const [modal, setModal] = useState(false);
@@ -40,7 +42,9 @@ export const ProjectModal = () => {
     <ListGroupItem onClick={toggle}>
       <div className="d-flex ">
         <span className="flex-fill project-heading">PROJECTS</span>
+        <Tooltip title="add project" arrow>
         <AddIcon color="secondary" />
+        </Tooltip>
       </div>
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle}>Add Project</ModalHeader>
@@ -54,7 +58,7 @@ export const ProjectModal = () => {
                 onChange={(e) => setProjectName(e.target.value)}
               />
           </ModalBody>
-          <ModalFooter>
+          <ModalFooter className="justify-content-center border-top-0">
             <Button
               color="secondary"
               onClick={() => {

@@ -35,9 +35,6 @@ a,a:hover{
   color: var(--text);
   text-align: center;
 }
-.active-item{
-  background-color: white;
-}
 button:focus{
   outline: none;
 }
@@ -52,21 +49,6 @@ button:focus{
 svg{
   margin: 0px auto;
 }
-.modal{
-  color: var(--text);
-}
-.modal-body{
-  padding: 2rem;
-  padding-bottom: 1px;
-}
-.modal-content{
-  background-color: var(--light);
-}
-.modal-header {
-  border-bottom: none;
-  background-color: white;
-  padding: inherit 1.5rem !important;
-}
 .close span{
   font-size: 25px;
 }
@@ -74,23 +56,12 @@ svg{
   color: var(--dark);
   border: none;
 }
-.modal-footer{
-  justify-content: center;
-  border-top: none;
-}
 .label{
   padding-left: 7px;
 }
 textarea{
   min-height: 210px;
   resize: none;
-}
-.delete{
-  font-size: 18px;
-}
-.project-heading{
-  font-size: 18px;
-  font-weight: 600;
 }
 .new-project{
   margin-bottom: 0px;
@@ -100,9 +71,6 @@ textarea{
 }
 .delete-icon:hover{
   display: block;
-}
-.task-div{
-  border-bottom: 1px solid var(--light);
 }
 .footer{
   background-color: var(--dark);

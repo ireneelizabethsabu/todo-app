@@ -1,0 +1,25 @@
+.modal {
+  color: var(--text);
+}
+.modal-body {
+  padding: 2rem;
+  padding-bottom: 1px;
+}
+.modal-content {
+  background-color: var(--light);
+}
+.modal-header {
+  border-bottom: none;
+  background-color: white;
+  padding: inherit 1.5rem !important;
+}
+.project-heading {
+  font-size: 18px;
+  font-weight: 600;
+}
+.active-item {
+  background-color: white;
+}
+.delete {
+  font-size: 18px;
+}
